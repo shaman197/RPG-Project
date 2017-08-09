@@ -7,14 +7,21 @@ using UnityEngine.AI;
 public class Player : MonoBehaviour
 {
     public float attackRange;
+    public GameObject enemy;
+    public GameObject fireball;
+    public float amountOfFireballs = 3;
 
     private NavMeshAgent playerAgent;
-    Enum.PlayerState state;
+    private Enum.PlayerState state;
+    private List<GameObject> fireballs;
+    private bool attacking;
 
     private void Start()
     {
         playerAgent = GetComponent<NavMeshAgent>();
         state = Enum.PlayerState.Normal;
+
+        fireballs = new List<GameObject>();
     }
 
     private void Update()
@@ -26,10 +33,17 @@ public class Player : MonoBehaviour
 
         if (state == Enum.PlayerState.Attack)
         {
-            if(playerAgent.remainingDistance <= attackRange)
+            playerAgent.destination = enemy.transform.position;
+
+            if (playerAgent.remainingDistance <= attackRange)
             {
                 playerAgent.isStopped = true;
                 Debug.Log("Attack");
+
+                if (!attacking)
+                {
+                    StartCoroutine(FireAttack());
+                }
             }
         }
     }
@@ -48,10 +62,40 @@ public class Player : MonoBehaviour
 
             else
             {
+                if(playerAgent.isStopped)
+                {
+                    playerAgent.isStopped = false;
+                }
+
                 state = Enum.PlayerState.Normal;
+                playerAgent.destination = interactionInfo.point;
             }
 
-            playerAgent.destination = interactionInfo.point;
         }
+    }
+
+    private IEnumerator FireAttack()
+    {
+        while(fireballs.Count != amountOfFireballs)
+        {
+            attacking = true;
+
+            Vector3 spawnpoint = transform.position + (enemy.transform.position - transform.position) * (1f / (amountOfFireballs - fireballs.Count));
+            GameObject createdFireball = Instantiate(fireball, spawnpoint, fireball.transform.rotation);
+            fireballs.Add(createdFireball);
+
+            yield return new WaitForSecondsRealtime(0.5f);
+        }
+
+        foreach(GameObject fireball in fireballs)
+        {
+            Destroy(fireball);
+        }
+
+        fireballs.Clear();
+
+        attacking = false;
+
+        yield return null;
     }
 }

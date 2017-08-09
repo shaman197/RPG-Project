@@ -108,6 +108,48 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 23800000, guid: 29440bdac8ec5bd40b7f09d02e78175d, type: 2}
+--- !u!1001 &277499166
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702254989336790, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &392527620
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +393,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485513337
 GameObject:
@@ -467,6 +509,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 5
+  enemy: {fileID: 2022391545}
+  fireball: {fileID: 1765349531249320, guid: c69612519d5c5d74a83b6bd5c22cf4d2, type: 2}
+  amountOfFireballs: 3
 --- !u!195 &1729311404
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -648,7 +693,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092168727
 GameObject:
@@ -736,7 +781,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
